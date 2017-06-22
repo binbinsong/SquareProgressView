@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.squareprogress.MySquareProcessView
+        android:id="@+id/sqareProcess"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_centerInParent="true"
+        app:currentPogress="90"
+        app:progressColor="@color/colorGreen"
+        app:strokeColor="@color/colorAccent"
+        app:strokeWith="3dip"
+        app:textColor="@color/colorAccent"
+        app:textSize="15sp" />
+</RelativeLayout>
