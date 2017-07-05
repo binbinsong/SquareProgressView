@@ -19,7 +19,7 @@ import android.view.View;
 
 public class MySquareProcessView extends View {
     private static final int MAX_PROGRESS = 100;//最大进度
-    private static final int PER_LINE_MAX_PROCESS = 100 / 4;//正方形每条边的最大进度
+    private static final float PER_LINE_MAX_PROCESS = 100 / 4;//正方形每条边的最大进度
 
     private Context mContext;
     private Paint paint;
@@ -145,10 +145,10 @@ public class MySquareProcessView extends View {
      * 画进度
      */
     private void drawProcessSquare(int progress) {
-        int topProcess = 0;
-        int rightProcess = 0;
-        int bottomProcess = 0;
-        int leftProcess = 0;
+        float topProcess = 0;
+        float rightProcess = 0;
+        float bottomProcess = 0;
+        float leftProcess = 0;
         if (progress <= PER_LINE_MAX_PROCESS) {//进度值小于等于一条边的进度   画 top进度线条
             topProcess = progress;
         } else if (progress <= PER_LINE_MAX_PROCESS * 2) {//进度值小于等于两条边的进度 top 进度为线条最大值；right进度值为progress-一条线条的总进度(减去top 的值)
@@ -170,7 +170,7 @@ public class MySquareProcessView extends View {
         drawProgressLeftLine(leftProcess);
     }
 
-    private void drawProgressTopLine(int progress) {
+    private void drawProgressTopLine(float progress) {
         Path path = new Path();
         /*把坐标移动到左上角*/
         path.moveTo(0, 0);
@@ -178,7 +178,7 @@ public class MySquareProcessView extends View {
         canvas.drawPath(path, processPaint);
     }
 
-    private void drawProgressRightLine(int progress) {
+    private void drawProgressRightLine(float progress) {
         Path path = new Path();
         /*把坐标移动到右上角*/
         path.moveTo(canvas.getWidth(), 0);
@@ -187,7 +187,7 @@ public class MySquareProcessView extends View {
     }
 
     /*比较特殊  lineTo是从左往右画的 进度是从右往左走的  所以取 当前line 的进度 减去总 line的总长度的 绝对值*/
-    private void drawProgressBottomLine(int progress) {
+    private void drawProgressBottomLine(float progress) {
         Path path = new Path();
         /*把坐标移动到右下角*/
         path.moveTo(canvas.getWidth(), canvas.getHeight());
@@ -195,7 +195,7 @@ public class MySquareProcessView extends View {
         canvas.drawPath(path, processPaint);
     }
 
-    private void drawProgressLeftLine(int progress) {
+    private void drawProgressLeftLine(float progress) {
         Path path = new Path();
         /*把坐标移动到左下角*/
         path.moveTo(0, canvas.getHeight());
